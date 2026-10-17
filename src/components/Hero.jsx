@@ -30,7 +30,7 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
       // Section: Mobile par flex-col, aur pt-20 diya taake navbar se na takraye.
-      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden w-full pt-20 lg:pt-20 pb-0 lg:pb-8"
+      className="relative h-[100dvh] lg:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden w-full pt-20 lg:pt-24 pb-0 lg:pb-16"
     >
       {/* ================= MOBILE BACKGROUND IMAGE ================= */}
                  {/* ================= MOBILE BACKGROUND IMAGE ================= */}
@@ -52,11 +52,11 @@ const Hero = () => {
       <div className="hidden lg:block absolute top-1/4 left-0 w-[500px] h-[500px] bg-royal/20 rounded-full blur-[150px] z-0 pointer-events-none"></div>
       <div className="hidden md:block absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] z-0 pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-5 md:px-12 w-full relative z-10 flex flex-col flex-grow lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16 lg:items-center">
+      <div className="max-w-7xl mx-auto px-5 md:px-12 w-full relative z-10 flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-32 lg:items-center">
 
         {/* ================= MOBILE CONTENT (Locked to Bottom) ================= */}
         {/* mt-auto lagaya hai taake content bottom par lock ho jaye */}
-        <div className="flex flex-col items-center text-center w-full lg:hidden pb-10">
+        <div className="flex flex-col items-center text-center w-full lg:hidden pb-8">
           
           {/* Name */}
           <motion.div 
@@ -169,27 +169,38 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* ================= DESKTOP IMAGE ================= */}
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="hidden lg:flex relative justify-center items-center w-full" style={{ perspective: 1200 }}>
+                {/* ================= DESKTOP IMAGE ================= */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }} 
+          animate={{ opacity: 1, scale: 1 }} 
+          transition={{ duration: 0.8, delay: 0.2 }} 
+          className="hidden lg:flex relative justify-center items-center w-full h-full" 
+          style={{ perspective: 1200 }}
+        >
           <motion.div 
             style={{ rotateX, rotateY, x: imageX, y: imageY, transformStyle: 'preserve-3d' }} 
             whileHover={{ scale: 1.02 }} 
             transition={{ type: "spring", stiffness: 300, damping: 20 }} 
-            className="relative w-full max-w-[380px] lg:max-w-[300px] xl:max-w-[380px] aspect-[4/5] group"
+            className="relative w-full max-w-[380px] lg:max-w-[340px] xl:max-w-[420px] aspect-[4/5] group"
           >
+            {/* Peeche ka Glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-royal/30 to-blue-400/10 rounded-[2.5rem] blur-2xl scale-105 -z-10 transition-all duration-700 group-hover:scale-110"></div>
 
-            <div className="w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative z-10 bg-[#0d1530]">
-              <img src="/Hero.jpeg" alt="Saad Ahmad" className="w-full h-full object-cover object-[50%_0%] scale-125 origin-top" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128]/90 via-transparent to-transparent opacity-70 pointer-events-none"></div>
+            {/* Foolproof Image Box using Background Image */}
+            <div 
+              className="w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative z-10 bg-[#0d1530] bg-cover bg-[center_25%] transition-all duration-700 group-hover:scale-105"
+              style={{ backgroundImage: "url('/Hero.jpeg')" }}
+            >
+              {/* Inner Border */}
               <div className="absolute inset-0 rounded-[2.5rem] border-[5px] border-white/5 pointer-events-none"></div>
             </div>
 
+            {/* Available for Work Badge */}
             <motion.div 
               initial={{ opacity: 0, y: 10 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.8, duration: 0.6 }} 
-              className="absolute bottom-8 -left-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3.5 shadow-2xl z-20 flex items-center space-x-3 pointer-events-none" 
+              className="absolute bottom-6 -left-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3.5 shadow-2xl z-20 flex items-center space-x-3 pointer-events-none" 
               style={{ transform: "translateZ(40px)" }}
             >
               <div className="relative flex h-3 w-3">
